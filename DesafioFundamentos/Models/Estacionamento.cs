@@ -10,7 +10,8 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine().ToUpper();
-            
+
+            // Verifica se a placa é vazia ou se já está no estacionamento. Se não, adiciona à lista   
             if (placa == "")
             {
                 throw new ArgumentException("A placa não pode ser vazia");
@@ -35,7 +36,10 @@ namespace DesafioFundamentos.Models
 
                 string input = Console.ReadLine();
 
-                if (!int.TryParse(input, out int horas))
+
+                // Horas trocado para decimal para suportar horas quebradas (por ex: 2,5 horas)
+                // Verifica se o input de hora é válido. Se for, remove o veículo
+                if (!decimal.TryParse(input, out decimal horas))
                 {
                     throw new ArgumentException("Esse não é um número válido de horas.");
                 }
@@ -56,6 +60,7 @@ namespace DesafioFundamentos.Models
             // Verifica se há veículos no estacionamento
             if (veiculos.Count != 0)
             {
+                // Imprime veículo por veículo que está no estacionamento, junto de seu ID
                 Console.WriteLine("Os veículos estacionados são:");
                 for (int count = 0; count < veiculos.Count; count++)
                 {
