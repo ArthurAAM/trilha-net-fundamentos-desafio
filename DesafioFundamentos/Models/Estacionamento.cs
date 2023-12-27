@@ -10,6 +10,10 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string placa = Console.ReadLine();
+            if(veiculos.Contains(placa)) 
+            {
+                throw new InvalidOperationException("Este carro já está no estacionamento");
+            }
             veiculos.Add(placa);
         }
 
@@ -18,7 +22,7 @@ namespace DesafioFundamentos.Models
             Console.WriteLine("Digite a placa do veículo para remover:");
             string placa = Console.ReadLine();
             // Verifica se o veículo existe
-            if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
+            if (veiculos.Any(x => x.Equals(placa, StringComparison.CurrentCultureIgnoreCase)))
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
 
