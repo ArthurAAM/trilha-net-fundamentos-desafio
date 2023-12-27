@@ -2,25 +2,32 @@ namespace DesafioFundamentos.Models
 {
     public class Estacionamento(decimal precoInicial, decimal precoPorHora)
     {
-        private decimal precoInicial = precoInicial;
-        private decimal precoPorHora = precoPorHora;
+        private readonly decimal precoInicial = precoInicial;
+        private readonly decimal precoPorHora = precoPorHora;
         private readonly List<string> veiculos = [];
 
         public void AdicionarVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            string placa = Console.ReadLine();
+            string placa = Console.ReadLine().ToUpper();
+            
+            if (placa == "")
+            {
+                throw new ArgumentException("A placa não pode ser vazia");
+            }
+            
             if(veiculos.Contains(placa)) 
             {
                 throw new InvalidOperationException("Este carro já está no estacionamento");
             }
+
             veiculos.Add(placa);
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
-            string placa = Console.ReadLine();
+            string placa = Console.ReadLine().ToUpper();
             // Verifica se o veículo existe
             if (veiculos.Any(x => x.Equals(placa, StringComparison.CurrentCultureIgnoreCase)))
             {
