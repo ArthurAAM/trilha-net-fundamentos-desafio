@@ -32,11 +32,22 @@ while (exibirMenu)
     switch (Console.ReadLine())
     {
         case "1":
-            es.AdicionarVeiculo();
+            try {
+                es.AdicionarVeiculo();
+            } catch (InvalidOperationException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             break;
 
         case "2":
-            es.RemoverVeiculo();
+            try
+            {
+                es.RemoverVeiculo();
+            } catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             break;
 
         case "3":
