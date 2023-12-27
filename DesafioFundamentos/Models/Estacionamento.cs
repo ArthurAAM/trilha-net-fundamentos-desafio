@@ -4,7 +4,7 @@ namespace DesafioFundamentos.Models
     {
         private decimal precoInicial = precoInicial;
         private decimal precoPorHora = precoPorHora;
-        private List<string> veiculos = [];
+        private readonly List<string> veiculos = [];
 
         public void AdicionarVeiculo()
         {
@@ -50,8 +50,10 @@ namespace DesafioFundamentos.Models
             if (veiculos.Count != 0)
             {
                 Console.WriteLine("Os veículos estacionados são:");
-                // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                // *IMPLEMENTE AQUI*
+                for (int count = 0; count < veiculos.Count; count++)
+                {
+                    Console.WriteLine($"N° {count + 1} - {veiculos[count]}");
+                }
             }
             else
             {
