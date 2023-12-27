@@ -35,7 +35,13 @@ while (exibirMenu)
                 es.AdicionarVeiculo();
             } catch (InvalidOperationException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Erro de operação: " + ex.Message);
+            } catch (ArgumentException ex)
+            {
+                Console.WriteLine("Erro de argumento: " + ex.Message);
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Um erro inesperado aconteceu..." + ex.Message);
             }
             break;
 
@@ -46,6 +52,9 @@ while (exibirMenu)
             } catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Um erro inesperado aconteceu..." + ex.Message);
             }
             break;
 
